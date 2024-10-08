@@ -39,6 +39,11 @@ public class Projectile {
         return false;  // stub
     }
 
+    // EFFECTS: returns true if the projectile has hit the ground
+    public boolean groundHit() {
+        return false; // stub
+    }
+
 
 
 
