@@ -34,6 +34,11 @@ public class Projectile {
         return 0;  // stub
     }
 
+    // EFFECTS: returns the approximate flight time of the projectile
+    public double flightTime() {
+        return 0; // stub
+    }
+
     // EFFECTS: returns true if the target is hit by the projectile
     public boolean targetHit() {
         return false;  // stub
