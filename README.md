@@ -18,7 +18,11 @@ I first learned about projectile motion in high school. It was pretty difficult 
 
 
 ## User Stories
-**1. The X and Y classes (I want to be able to add one set of parameters to a collection of parameters):** In this project, the X class would involve the two parameters - initial speed and angle relative to the ground. With each try the user completes, the latest parameters will be added to the Y class, which would be a list of parameters, which can be an arbitrary number of times until the user hits the projectile.
+**1. The X and Y classes (I want to be able to add one set of parameters to a collection of parameters):** In this project, the X class will be the Projectile object and the Y class will be the ProjectileList class. With each attempt, the most recent projectile will be added to the list of projectiles.
 \
 2. At any point during the game, I want to have the option to be able to access the parameters that have been input until now.
+\
+3. I want to see the Attempt Number at all times during the game.
+\
+4. I want to be able to see an approximate flight time for the projectile, so I can better understand the physics behind it.
 
