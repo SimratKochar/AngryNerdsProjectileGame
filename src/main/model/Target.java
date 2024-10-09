@@ -32,7 +32,19 @@ public class Target {
         return 0; // stub
     }
 
+    // Setter Methods for tests
 
+    // MODIFIES: this
+    // EFFECTS: sets the target's x coordinate to specified value
+    public void setX(int x) {
+        this.coordX = x;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets the target's y coordinate to specified value
+    public void setY(int y) {
+        this.coordY = y;
+    }
 
     // Getter Methods
 
