@@ -46,8 +46,8 @@ public class Projectile {
     public boolean targetHit(Target target) {
         Rectangle projectileRectangle = new Rectangle(Math.toIntExact(Math.round(getX() - SIZE / 2)),
                 Math.toIntExact(Math.round(getY() - SIZE / 2)), SIZE, SIZE);
-        Rectangle targetRectangle = new Rectangle(Math.toIntExact(Math.round(target.getX() - SIZE / 2)),
-                Math.toIntExact(Math.round(target.getY() - SIZE / 2)), SIZE, SIZE);
+        Rectangle targetRectangle = new Rectangle(Math.toIntExact(Math.round(target.getX() - Target.SIZE / 2)),
+                Math.toIntExact(Math.round(target.getY() - Target.SIZE / 2)), Target.SIZE, Target.SIZE);
         return  projectileRectangle.intersects(targetRectangle);
     }
 
