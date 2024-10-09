@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.Rectangle;
+
 /*
  * Represents the Projectile Object
  */
@@ -26,27 +28,32 @@ public class Projectile {
     // MODIFIES: this
     // EFFECTS: update the projectile position at a specified time using kinematics equations
     public void updateCoordinates(double time) {
-        // stub
+        this.coordX = velocity * time * Math.cos(Math.toRadians(angle));
+        this.coordY = INITIAL_Y - velocity * time * Math.sin(Math.toRadians(angle)) + 0.5 * 9.81 * time * time;
     }
 
     // EFFECTS: returns the maximum height reached by projectile
     public double maxHeight() {
-        return 0;  // stub
+        return velocity * velocity * Math.pow(Math.sin(Math.toRadians(angle)), 2) / 19.62;
     }
 
     // EFFECTS: returns the approximate flight time of the projectile
     public double flightTime() {
-        return 0; // stub
+        return 2 * velocity * Math.sin(Math.toRadians(angle)) / 9.81;
     }
 
     // EFFECTS: returns true if the target is hit by the projectile
     public boolean targetHit(Target target) {
-        return false;  // stub
+        Rectangle projectileRectangle = new Rectangle(Math.toIntExact(Math.round(getX() - SIZE / 2)),
+                Math.toIntExact(Math.round(getY() - SIZE / 2)), SIZE, SIZE);
+        Rectangle targetRectangle = new Rectangle(Math.toIntExact(Math.round(target.getX() - SIZE / 2)),
+                Math.toIntExact(Math.round(target.getY() - SIZE / 2)), SIZE, SIZE);
+        return  projectileRectangle.intersects(targetRectangle);
     }
 
     // EFFECTS: returns true if the projectile has hit the ground
     public boolean groundHit() {
-        return false; // stub
+        return this.coordY >= 250;
     }
 
 
@@ -58,22 +65,22 @@ public class Projectile {
 
     // EFFECTS: returns the velocity of projectile
     public int getVelocity() {
-        return 0; // stub
+        return this.velocity; // stub
     }
 
     // EFFECTS: returns the angle of projectile
     public int getAngle() {
-        return 0; // stub
+        return this.angle; // stub
     }
  
     // EFFECTS: returns the x coordinate of projectile
-    public int getX() {
-        return 0; // stub
+    public double getX() {
+        return this.coordX; // stub
     }
 
     // EFFECTS: returns the y coordinate of projectile
-    public int getY() {
-        return 0; // stub
+    public double getY() {
+        return this.coordY; // stub
     }
 
 }
