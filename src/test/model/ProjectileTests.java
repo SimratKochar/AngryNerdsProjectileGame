@@ -31,18 +31,18 @@ public class ProjectileTests {
     @Test
     public void testUpdateCoordinates() {
         projectile.updateCoordinates(2);
-        assertEquals(60 / Math.sqrt(2), projectile.getX());
-        assertEquals(250 - 60 / Math.sqrt(2) + 19.62, projectile.getY());
+        assertEquals(60 * Math.cos(Math.toRadians(45)), projectile.getX());
+        assertEquals(269.62 - 60 * Math.sin(Math.toRadians(45)), projectile.getY());
     }
 
     @Test
     public void testMaxHeight() {
-        assertEquals(225 / 9.81, projectile.maxHeight());
+        assertEquals(900 * Math.pow(Math.sin(Math.toRadians(45)), 2) /19.62, projectile.maxHeight());
     }
 
     @Test
     public void testFlightTime() {
-        assertEquals(30 * Math.sqrt(2) / 9.81, projectile.flightTime());
+        assertEquals(60 * Math.sin(Math.toRadians(45)) / 9.81, projectile.flightTime());
     }
 
     @Test
@@ -60,6 +60,7 @@ public class ProjectileTests {
         assertFalse(projectile.targetHit(target2));
     }
 
+    @Test
     public void testGroundHit() {
         projectile.updateCoordinates(2);
         assertFalse(projectile.groundHit());
