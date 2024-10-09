@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Random;
 
 /*
  * Represents the Target Object
@@ -24,12 +25,14 @@ public class Target {
 
     // EFFECTS: generates a random x coordinate in the specified range for target
     public int getRandomX() {
-        return 0; // stub
+        Random rand = new Random();
+        return rand.nextInt(MAX_X_COORD - MIN_X_COORD) + MIN_X_COORD;
     }
 
     // EFFECTS: generates a random y coordinate in the specified range for target
     public int getRandomY() {
-        return 0; // stub
+        Random rand = new Random();
+        return rand.nextInt(MAX_Y_COORD - MIN_Y_COORD) + MIN_Y_COORD;
     }
 
     // Setter Methods for tests
@@ -50,12 +53,12 @@ public class Target {
 
     // EFFECTS: returns the target's x coordinate
     public int getX() {
-        return 0; // stub
+        return this.coordX; // stub
     }
 
     // EFFECTS: returns the target's y coordinate
     public int getY() {
-        return 0; // stub
+        return this.coordY; // stub
     }
 
 }
