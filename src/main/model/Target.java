@@ -8,7 +8,8 @@ import java.util.Random;
  * anywhere in the region between the points (30, 50) and (200, 120).
  */
 public class Target {
-    private static final int SIZE = 20;
+    public static final int SIZE = 20;
+    
     private static final int MIN_X_COORD = 30;
     private static final int MIN_Y_COORD = 50;
     private static final int MAX_X_COORD = 200;
