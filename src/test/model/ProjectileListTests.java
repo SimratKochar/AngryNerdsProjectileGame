@@ -70,13 +70,13 @@ public class ProjectileListTests {
     @Test
     public void testListVelocitiesEmptyList() {
         List<Integer> velocities = projectileList.listVelocities();
-        assertEquals(null, velocities);
+        assertEquals(0, velocities.size());
     }
 
     @Test
     public void testListAnglesEmptyList() {
         List<Integer> angles = projectileList.listAngles();
-        assertEquals(null, angles);
+        assertEquals(0, angles.size());
     }
 
     @Test
