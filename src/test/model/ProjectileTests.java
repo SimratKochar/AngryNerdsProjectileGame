@@ -64,7 +64,7 @@ public class ProjectileTests {
     public void testGroundHit() {
         projectile.updateCoordinates(2);
         assertFalse(projectile.groundHit());
-        projectile.updateCoordinates(4.4);
+        projectile.updateCoordinates((float) 4.4);
         assertTrue(projectile.groundHit());
     }
 

@@ -12,8 +12,8 @@ public class Projectile {
 
     private int velocity;
     private int angle;
-    private double coordX;
-    private double coordY;
+    private float coordX;
+    private float coordY;
 
     // REQUIRES: velocity > 0, 0 degrees < angle < 90 degrees
     // EFFECTS: constructs a projectile with given velocity and angle at position(0, 100)
@@ -27,9 +27,9 @@ public class Projectile {
     // REQUIRES: time > 0
     // MODIFIES: this
     // EFFECTS: update the projectile position at a specified time using kinematics equations
-    public void updateCoordinates(double time) {
-        this.coordX = velocity * time * Math.cos(Math.toRadians(angle));
-        this.coordY = INITIAL_Y - velocity * time * Math.sin(Math.toRadians(angle)) + 0.5 * 9.81 * time * time;
+    public void updateCoordinates(float time) {
+        this.coordX = (float) (velocity * time * Math.cos(Math.toRadians(angle)));
+        this.coordY = (float) (INITIAL_Y - velocity * time * Math.sin(Math.toRadians(angle)) + 0.5 * 9.81 * time * time);
     }
 
     // EFFECTS: returns the maximum height reached by projectile
@@ -44,8 +44,8 @@ public class Projectile {
 
     // EFFECTS: returns true if the target is hit by the projectile
     public boolean targetHit(Target target) {
-        Rectangle projectileRectangle = new Rectangle(Math.toIntExact(Math.round(getX() - SIZE / 2)),
-                Math.toIntExact(Math.round(getY() - SIZE / 2)), SIZE, SIZE);
+        Rectangle projectileRectangle = new Rectangle(Math.round(getX() - SIZE / 2),
+                Math.round(getY() - SIZE / 2), SIZE, SIZE);
         Rectangle targetRectangle = new Rectangle(Math.toIntExact(Math.round(target.getX() - Target.SIZE / 2)),
                 Math.toIntExact(Math.round(target.getY() - Target.SIZE / 2)), Target.SIZE, Target.SIZE);
         return  projectileRectangle.intersects(targetRectangle);
@@ -74,12 +74,12 @@ public class Projectile {
     }
  
     // EFFECTS: returns the x coordinate of projectile
-    public double getX() {
+    public float getX() {
         return this.coordX; // stub
     }
 
     // EFFECTS: returns the y coordinate of projectile
-    public double getY() {
+    public float getY() {
         return this.coordY; // stub
     }
 
