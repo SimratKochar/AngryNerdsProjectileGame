@@ -5,7 +5,7 @@ package model;
  */
 public class Projectile {
     private static final int INITIAL_X = 0;
-    private static final int INITIAL_Y = 100;
+    private static final int INITIAL_Y = 250;
     private static final int SIZE = 15;
 
     private int velocity;
@@ -15,7 +15,7 @@ public class Projectile {
 
     // REQUIRES: velocity > 0, 0 degrees < angle < 90 degrees
     // EFFECTS: constructs a projectile with given velocity and angle at position(0, 100)
-    public Projectile(int velocity,  int angle, double coordX, double coordY) {
+    public Projectile(int velocity,  int angle) {
         this.velocity = velocity;
         this.angle = angle;
         this.coordX = INITIAL_X;
@@ -40,7 +40,7 @@ public class Projectile {
     }
 
     // EFFECTS: returns true if the target is hit by the projectile
-    public boolean targetHit() {
+    public boolean targetHit(Target target) {
         return false;  // stub
     }
 
