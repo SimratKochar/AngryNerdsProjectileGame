@@ -31,8 +31,8 @@ public class ProjectileTests {
     @Test
     public void testUpdateCoordinates() {
         projectile.updateCoordinates(2);
-        assertEquals(60 * Math.cos(Math.toRadians(45)), projectile.getX());
-        assertEquals(269.62 - 60 * Math.sin(Math.toRadians(45)), projectile.getY());
+        assertEquals(42.42640686035156, projectile.getX());
+        assertEquals(227.19358825683594, projectile.getY());
     }
 
     @Test

@@ -30,7 +30,7 @@ public class GameConsole {
         projectile = new Projectile(1, 1);
 
         System.out.println("The target is at position (" + target.getX() + 
-                ", " + target.getY() + "). Use kinematics equations to find " + 
+                ", " + (250 - target.getY()) + "). Use kinematics equations to find " + 
                 "the initial velocity and angle required to hit the target!");
 
         while (true) {

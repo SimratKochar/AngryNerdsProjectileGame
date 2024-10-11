@@ -54,12 +54,12 @@ public class Target {
 
     // EFFECTS: returns the target's x coordinate
     public int getX() {
-        return this.coordX; // stub
+        return this.coordX;
     }
 
     // EFFECTS: returns the target's y coordinate
     public int getY() {
-        return this.coordY; // stub
+        return this.coordY;
     }
 
 }
