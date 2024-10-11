@@ -55,16 +55,15 @@ public class GameConsole {
     public void moveProjectile() {
         double time = 0.1;
         while (!projectile.groundHit()) {
-            projectile.updateCoordinates(0);
+            projectile.updateCoordinates((float) time);
             time += 0.1;
 
             if (projectile.targetHit(target)) {
                 System.out.println("Congratulations, you hit the target!");
-                break;
+                System.exit(0);
             }
         }
         System.out.println("You missed the target, try again!");
 
     }
-
 }
