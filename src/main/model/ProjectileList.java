@@ -50,12 +50,12 @@ public class ProjectileList {
 
     // EFFECTS: returns the list of projectiles
     public List<Projectile> getProjectiles() {
-        return projectiles; // stub
+        return projectiles; 
     }
 
     // EFFECTS: returns the number of projectiles in list to represent attempts
     public int getNumAttempts() {
-        return projectiles.size(); // stub
+        return projectiles.size(); 
     }
 
 }

@@ -52,6 +52,10 @@ public class GameConsole {
         }
     }
 
+    // MODIFIES: projectile
+    // EFFECTS: updates the projectile's position with time
+    //          quits the program projectile has hit the target
+    //          otherwise continues the program if projectile hits ground before target
     public void moveProjectile() {
         double time = 0.1;
         while (!projectile.groundHit()) {

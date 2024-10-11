@@ -16,7 +16,7 @@ public class Projectile {
     private float coordY;
 
     // REQUIRES: velocity > 0, 0 degrees < angle < 90 degrees
-    // EFFECTS: constructs a projectile with given velocity and angle at position(0, 100)
+    // EFFECTS: constructs a projectile with given velocity and angle at position(0, 250)
     public Projectile(int velocity,  int angle) {
         this.velocity = velocity;
         this.angle = angle;
@@ -66,22 +66,22 @@ public class Projectile {
 
     // EFFECTS: returns the velocity of projectile
     public int getVelocity() {
-        return this.velocity; // stub
+        return this.velocity;
     }
 
     // EFFECTS: returns the angle of projectile
     public int getAngle() {
-        return this.angle; // stub
+        return this.angle;
     }
  
     // EFFECTS: returns the x coordinate of projectile
     public float getX() {
-        return this.coordX; // stub
+        return this.coordX;
     }
 
     // EFFECTS: returns the y coordinate of projectile
     public float getY() {
-        return this.coordY; // stub
+        return this.coordY;
     }
 
 }
