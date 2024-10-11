@@ -29,7 +29,8 @@ public class Projectile {
     // EFFECTS: update the projectile position at a specified time using kinematics equations
     public void updateCoordinates(float time) {
         this.coordX = (float) (velocity * time * Math.cos(Math.toRadians(angle)));
-        this.coordY = (float) (INITIAL_Y - velocity * time * Math.sin(Math.toRadians(angle)) + 0.5 * 9.81 * time * time);
+        this.coordY = (float) (INITIAL_Y - velocity * time * Math.sin(Math.toRadians(angle)) 
+                + 0.5 * 9.81 * time * time);
     }
 
     // EFFECTS: returns the maximum height reached by projectile
@@ -53,7 +54,7 @@ public class Projectile {
 
     // EFFECTS: returns true if the projectile has hit the ground
     public boolean groundHit() {
-        return this.coordY >= 250;
+        return this.coordY > 250;
     }
 
 
