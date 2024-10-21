@@ -43,6 +43,8 @@ public class Projectile {
         return 2 * velocity * Math.sin(Math.toRadians(angle)) / 9.81;
     }
 
+    // Referenced from Lab 2 - PaddleBall
+    // https://github.students.cs.ubc.ca/CPSC210/Lab2-PaddleBall-Starter
     // EFFECTS: returns true if the target is hit by the projectile
     public boolean targetHit(Target target) {
         Rectangle projectileRectangle = new Rectangle(Math.round(getX() - SIZE / 2),
