@@ -26,3 +26,11 @@ I first learned about projectile motion in high school. It was pretty difficult 
 \
 4. I want to be able to see an approximate flight time for the projectile, so I can better understand the physics behind it.
 
+### Added user stories for Phase 2:
+\
+5. When I quit the game, I want to have the option to be able to save the attempts made till now.
+\
+6. When I start the application, I want to have the option of either starting a new game, or loading a saved one.
+
+
+
