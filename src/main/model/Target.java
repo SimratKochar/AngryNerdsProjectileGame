@@ -2,12 +2,16 @@ package model;
 
 import java.util.Random;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 /*
  * Represents the Target Object
  * Assuming we have a terminal screen of size (250, 150), the target can spawn
  * anywhere in the region between the points (30, 50) and (200, 120).
  */
-public class Target {
+public class Target implements Writable {
     public static final int SIZE = 20;
     
     private static final int MIN_X_COORD = 30;
@@ -36,6 +40,14 @@ public class Target {
         return rand.nextInt(MAX_Y_COORD - MIN_Y_COORD) + MIN_Y_COORD;
     }
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("targetX", coordX);
+        json.put("targetY", coordY);
+        return json;
+    }
+
     // Setter Methods for tests
 
     // MODIFIES: this
@@ -61,5 +73,6 @@ public class Target {
     public int getY() {
         return this.coordY;
     }
+
 
 }
