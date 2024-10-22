@@ -3,11 +3,16 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 /*
  * Stores the List of projectiles fired until now
  * This will be used to display the list of parameters set by the user previously
  */
-public class ProjectileList {
+public class ProjectileList implements Writable{
     private ArrayList<Projectile> projectiles;
 
     // EFFECTS: constructs an empty list of projectiles
@@ -43,7 +48,24 @@ public class ProjectileList {
         return angles;
     }
 
+    // Referenced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("projectiles", projectilesToJson());
+        return json;
+    }
 
+    // EFFECTS: returns projectiles as a JSON Array
+    private JSONArray projectilesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Projectile p: projectiles) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
+    }
 
 
     // Getter Methods
