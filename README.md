@@ -1,8 +1,8 @@
-# Projectile Motion Game
+# Angry Nerds - Projectile Motion Game
 
 ## Project Description
 
-As the name suggests, this project is based on the physical phenomenon - projectile motion. Some **basic features** of the game are:
+As the name (a parody on Angry Birds) suggests, this project is based on the physical phenomenon - projectile motion. Some **basic features** of the game are:
 - There will be a "canon"-like object at the left of the window that shoots projectiles (circles), one at a time.
 - The trajectory of the projectile will be based on two parameters - initial speed and angle relative to the ground - which will be input by the user. 
 - The "target" circle will spawn in a random location in a region towards the right of the canon.
