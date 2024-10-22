@@ -43,14 +43,14 @@ public class JsonReaderTest extends JsonTest {
 
    @Test
    void testGeneralGameProgress() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralGameProgress");
+        JsonReader reader = new JsonReader("./data/testReaderGeneralGameProgress.json");
         try {
             Target t = reader.readTarget();
             checkTarget(45, 80, t);
 
             ProjectileList pl = reader.readPList();
             List<Projectile> projectiles = pl.getProjectiles();
-            assertEquals(2, pl.getNumAttempts());
+            assertEquals(2, projectiles.size());
             checkProjectile(50, 30, projectiles.get(0));
             checkProjectile(50, 20, projectiles.get(1));
         } catch (IOException e) {
