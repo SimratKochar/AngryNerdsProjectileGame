@@ -2,10 +2,14 @@ package model;
 
 import java.awt.Rectangle;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 /*
  * Represents the Projectile Object
  */
-public class Projectile {
+public class Projectile implements Writable{
     private static final int INITIAL_X = 0;
     private static final int INITIAL_Y = 250;
     private static final int SIZE = 15;
@@ -59,7 +63,14 @@ public class Projectile {
         return this.coordY > 250;
     }
 
-
+    // Referenced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("velocity", velocity);
+        json.put("angle", angle);
+        return json;
+    }
 
 
 
