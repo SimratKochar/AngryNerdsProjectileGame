@@ -1,0 +1,20 @@
+{
+    "Target": {
+        "targetY": 107,
+        "targetX": 40
+    },
+    "projectiles": [
+        {
+            "angle": 60,
+            "velocity": 59
+        },
+        {
+            "angle": 50,
+            "velocity": 90
+        },
+        {
+            "angle": 30,
+            "velocity": 85
+        }
+    ]
+}
