@@ -25,13 +25,13 @@ public class TargetTests {
     @Test
     public void testGetRandomX() {
         int randomX = target.getRandomX();
-        assertTrue(randomX >= 30 &&  randomX <= 200);
+        assertTrue(randomX >= 150 &&  randomX <= 700);
     }
 
     @Test
     public void testGetRandomY() {
         int randomY = target.getRandomY();
-        assertTrue(randomY >= 50 &&  randomY <= 120);
+        assertTrue(randomY >= 200 &&  randomY <= 500);
     }
 
 }

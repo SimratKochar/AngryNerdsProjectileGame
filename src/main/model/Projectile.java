@@ -1,6 +1,8 @@
 package model;
 
 import java.awt.Rectangle;
+import java.text.DecimalFormat;
+import java.awt.Color;
 
 import org.json.JSONObject;
 
@@ -10,9 +12,11 @@ import persistence.Writable;
  * Represents the Projectile Object
  */
 public class Projectile implements Writable{
-    private static final int INITIAL_X = 0;
-    private static final int INITIAL_Y = 250;
-    private static final int SIZE = 15;
+    private static final DecimalFormat decFor= new DecimalFormat("0.00");
+    public static final int INITIAL_X = 0;
+    public static final int INITIAL_Y = 800;
+    public static final int SIZE = 15;
+    public static final Color COLOR = new Color(18, 129, 255);
 
     private int velocity;
     private int angle;
@@ -38,13 +42,15 @@ public class Projectile implements Writable{
     }
 
     // EFFECTS: returns the maximum height reached by projectile
-    public double maxHeight() {
-        return velocity * velocity * Math.pow(Math.sin(Math.toRadians(angle)), 2) / 19.62;
+    public String maxHeight() {
+        double maxHeight = velocity * velocity * Math.pow(Math.sin(Math.toRadians(angle)), 2) / 19.62;
+        return decFor.format(maxHeight);
     }
 
     // EFFECTS: returns the approximate flight time of the projectile
-    public double flightTime() {
-        return 2 * velocity * Math.sin(Math.toRadians(angle)) / 9.81;
+    public String flightTime() {
+        double flightTime = 2 * velocity * Math.sin(Math.toRadians(angle)) / 9.81;
+        return decFor.format(flightTime);
     }
 
     // Referenced from Lab 2 - PaddleBall
@@ -60,7 +66,7 @@ public class Projectile implements Writable{
 
     // EFFECTS: returns true if the projectile has hit the ground
     public boolean groundHit() {
-        return this.coordY > 250;
+        return this.coordY > INITIAL_Y;
     }
 
     // Referenced from https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git

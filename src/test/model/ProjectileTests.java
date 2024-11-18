@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.text.DecimalFormat;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -14,6 +16,7 @@ public class ProjectileTests {
     private Projectile projectile;
     private Target target1;
     private Target target2;
+    private static final DecimalFormat decFor = new DecimalFormat("0.00");
 
     @BeforeEach
     public void setup() {
@@ -25,31 +28,31 @@ public class ProjectileTests {
         assertEquals(30, projectile.getVelocity());
         assertEquals(45, projectile.getAngle());
         assertEquals(0, projectile.getX());
-        assertEquals(250, projectile.getY());
+        assertEquals(800, projectile.getY());
     }
 
     @Test
     public void testUpdateCoordinates() {
         projectile.updateCoordinates(2);
         assertEquals(42.42640686035156, projectile.getX());
-        assertEquals(227.19358825683594, projectile.getY());
+        assertEquals(777.193603515625, projectile.getY());
     }
 
     @Test
     public void testMaxHeight() {
-        assertEquals(900 * Math.pow(Math.sin(Math.toRadians(45)), 2) /19.62, projectile.maxHeight());
+        assertEquals(decFor.format(22.94), projectile.maxHeight());
     }
 
     @Test
     public void testFlightTime() {
-        assertEquals(60 * Math.sin(Math.toRadians(45)) / 9.81, projectile.flightTime());
+        assertEquals(decFor.format(4.32), projectile.flightTime());
     }
 
     @Test
     public void testTargetHit() {
         target1 = new Target();
         target1.setX(42);
-        target1.setY(227);
+        target1.setY(777);
         
         target2 = new Target();
         target2.setX(42);

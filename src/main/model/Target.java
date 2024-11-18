@@ -1,10 +1,12 @@
 package model;
 
 import java.util.Random;
+import java.awt.Color;
 
 import org.json.JSONObject;
 
 import persistence.Writable;
+import ui.GamePanel;
 
 /*
  * Represents the Target Object
@@ -13,11 +15,12 @@ import persistence.Writable;
  */
 public class Target implements Writable {
     public static final int SIZE = 20;
+    public static final Color COLOR = Color.RED;
     
-    private static final int MIN_X_COORD = 30;
-    private static final int MIN_Y_COORD = 50;
-    private static final int MAX_X_COORD = 200;
-    private static final int MAX_Y_COORD = 120;
+    private static final int MIN_X_COORD = 150;
+    private static final int MIN_Y_COORD = 200;
+    private static final int MAX_X_COORD = 700;
+    private static final int MAX_Y_COORD = 500;
 
     private int coordX;
     private int coordY;
