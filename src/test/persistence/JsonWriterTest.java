@@ -39,8 +39,8 @@ public class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterEmptyProjectileList.json");
             t = reader.readTarget();
-            assertTrue(30 <= t.getX() && 200 >= t.getX()); // checks random x coordinate of Target
-            assertTrue(50 <= t.getY() && 120 >= t.getY()); // checks random y coordinate of Target
+            assertTrue(150 <= t.getX() && 700 >= t.getX()); // checks random x coordinate of Target
+            assertTrue(200 <= t.getY() && 500 >= t.getY()); // checks random y coordinate of Target
             pl = reader.readPList();
             assertEquals(0, pl.getNumAttempts());
         } catch (IOException e) {
@@ -62,8 +62,8 @@ public class JsonWriterTest extends JsonTest {
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralGameProgress.json");
             t = reader.readTarget();
-            assertTrue(30 <= t.getX() && 200 >= t.getX()); // checks random x coordinate of Target
-            assertTrue(50 <= t.getY() && 120 >= t.getY()); // checks random y coordinate of Target
+            assertTrue(150 <= t.getX() && 700 >= t.getX()); // checks random x coordinate of Target
+            assertTrue(200 <= t.getY() && 500 >= t.getY()); // checks random y coordinate of Target
             pl = reader.readPList();
             List<Projectile> projectiles = pl.getProjectiles();
             assertEquals(2, projectiles.size());

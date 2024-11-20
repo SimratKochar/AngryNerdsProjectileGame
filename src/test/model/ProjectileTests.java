@@ -28,14 +28,14 @@ public class ProjectileTests {
         assertEquals(30, projectile.getVelocity());
         assertEquals(45, projectile.getAngle());
         assertEquals(0, projectile.getX());
-        assertEquals(800, projectile.getY());
+        assertEquals(585, projectile.getY());
     }
 
     @Test
     public void testUpdateCoordinates() {
         projectile.updateCoordinates(2);
         assertEquals(42.42640686035156, projectile.getX());
-        assertEquals(777.193603515625, projectile.getY());
+        assertEquals(562.193603515625, projectile.getY());
     }
 
     @Test
@@ -52,7 +52,7 @@ public class ProjectileTests {
     public void testTargetHit() {
         target1 = new Target();
         target1.setX(42);
-        target1.setY(777);
+        target1.setY(562);
         
         target2 = new Target();
         target2.setX(42);

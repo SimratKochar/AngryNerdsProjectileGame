@@ -39,10 +39,10 @@ public class JsonReaderTest extends JsonTest {
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
-   }
+    }
 
-   @Test
-   void testGeneralGameProgress() {
+    @Test
+    void testGeneralGameProgress() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralGameProgress.json");
         try {
             Target t = reader.readTarget();
@@ -56,5 +56,5 @@ public class JsonReaderTest extends JsonTest {
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
-   }
+    }
 }

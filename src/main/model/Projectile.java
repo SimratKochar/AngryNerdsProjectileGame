@@ -14,8 +14,8 @@ import persistence.Writable;
 public class Projectile implements Writable{
     private static final DecimalFormat decFor= new DecimalFormat("0.00");
     public static final int INITIAL_X = 0;
-    public static final int INITIAL_Y = 800;
-    public static final int SIZE = 15;
+    public static final int INITIAL_Y = 585;
+    public static final int SIZE = 20;
     public static final Color COLOR = new Color(18, 129, 255);
 
     private int velocity;
@@ -58,9 +58,9 @@ public class Projectile implements Writable{
     // EFFECTS: returns true if the target is hit by the projectile
     public boolean targetHit(Target target) {
         Rectangle projectileRectangle = new Rectangle(Math.round(getX() - SIZE / 2),
-                Math.round(getY() - SIZE / 2), SIZE, SIZE);
-        Rectangle targetRectangle = new Rectangle(Math.toIntExact(Math.round(target.getX() - Target.SIZE / 2)),
-                Math.toIntExact(Math.round(target.getY() - Target.SIZE / 2)), Target.SIZE, Target.SIZE);
+                Math.round(getY() - SIZE / 2), SIZE / 2, SIZE / 2);
+        Rectangle targetRectangle = new Rectangle(Math.toIntExact(Math.round(target.getX() - Target.SIZE / 2)),  // 
+                Math.toIntExact(Math.round(target.getY() - Target.SIZE / 2)), Target.SIZE, Target.SIZE); //  
         return  projectileRectangle.intersects(targetRectangle);
     }
 

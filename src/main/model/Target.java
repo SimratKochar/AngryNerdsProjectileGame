@@ -6,7 +6,6 @@ import java.awt.Color;
 import org.json.JSONObject;
 
 import persistence.Writable;
-import ui.GamePanel;
 
 /*
  * Represents the Target Object
