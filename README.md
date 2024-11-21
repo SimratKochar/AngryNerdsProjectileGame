@@ -2,7 +2,7 @@
 
 ## Project Description
 
-As the name (a parody on Angry Birds) suggests, this project is based on the physical phenomenon - projectile motion. Some **basic features** of the game are:
+**Welcome to Angry Nerds!** As the name (a parody on Angry Birds) suggests, this project is based on the physical phenomenon - projectile motion. Some **basic features** of the game are:
 - There will be a "canon"-like object at the left of the window that shoots projectiles (circles), one at a time.
 - The trajectory of the projectile will be based on two parameters - initial speed and angle relative to the ground - which will be input by the user. 
 - The "target" circle will spawn in a random location in a region towards the right of the canon.
@@ -32,5 +32,18 @@ I first learned about projectile motion in high school. It was pretty difficult 
 \
 6. When I start the application, I want to have the option of either starting a new game, or loading a saved one.
 
+## Instructions for end user
+When you start the game, you will see three different panels. The top panel displays the number of attempts you have made till now and your previously entered parameters. You also have a lot of controls for the game here. The bottom projectile shows you the maximum height and total flight time of the last projectile you launched. In the main panel, which is black, you will see a red circle which is your target. The projectile is launched from the bottom left corner. 
+
+Your mission, should you choose to accept it, is to enter the initial velocity (with a good starting point being 50) and the initial angle for the projectile and click the Launch buttom, to hit the red target. You will see the projectile (blue circle) on the screen if your parameters were valid. **Make sure that your angle (in degrees) is between 0 and 90.**
+
+- The first additional action related to "adding Projectiles to ProjectileList" is removing the last added projectile. In case you entered crazy parameters and don't want it to affect your score, you can click the "Remove Last Projectile" button to preserve your score (and pride!).
+
+- The second additional action is to relaunch the last projectile. This can be done by clicking the "Replay Last Projectile Button". This is particularly useful if you come back to the game after a while, to see the trajectory of the last projectile again.
+
+- To locate my visual component... you can play the game!!! There is a blue moving projectile, and also a (not so) hidden image that is only visible when you hit the target. 
+
+- If you want to save your progress, you can click the "Save Game" option and you will have the state of the game ready to load whenever you want. Do remember that you can have only one saved state at a time. If you save the game in another state, the previous file will be overwritten.
 
 
+- To load the saved state at a later point, you can click the "Load Game" button. 
