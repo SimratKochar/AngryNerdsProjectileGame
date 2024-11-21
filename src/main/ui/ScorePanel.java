@@ -179,9 +179,7 @@ public class ScorePanel extends JPanel {
         if (!projectiles.isEmpty()) {
             projectiles.removeLast();
             gp.setProjectile(projectiles.getLast());
-            if (gp.isTargetHit()) {
-                gp.enableLaunchButton();
-            }
+            gp.enableLaunchButton();
         }
     }
 
