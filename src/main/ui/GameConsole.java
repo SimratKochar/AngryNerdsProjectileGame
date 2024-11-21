@@ -23,7 +23,7 @@ public class GameConsole {
     private JsonReader jsonReader;
 
     // EFFECTS: runs the game
-    public GameConsole() throws FileNotFoundException{
+    public GameConsole() throws FileNotFoundException {
         projList = new ProjectileList();
         target = new Target();
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -150,5 +150,4 @@ public class GameConsole {
             makeGame();
         }
     }
-
 }

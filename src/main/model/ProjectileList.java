@@ -12,7 +12,7 @@ import persistence.Writable;
  * Stores the List of projectiles fired until now
  * This will be used to display the list of parameters set by the user previously
  */
-public class ProjectileList implements Writable{
+public class ProjectileList implements Writable {
     private ArrayList<Projectile> projectiles;
 
     // EFFECTS: constructs an empty list of projectiles

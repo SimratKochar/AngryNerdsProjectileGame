@@ -11,8 +11,8 @@ import persistence.Writable;
 /*
  * Represents the Projectile Object
  */
-public class Projectile implements Writable{
-    private static final DecimalFormat decFor= new DecimalFormat("0.00");
+public class Projectile implements Writable {
+    private static final DecimalFormat decFor = new DecimalFormat("0.00");
     public static final int INITIAL_X = 0;
     public static final int INITIAL_Y = 585;
     public static final int SIZE = 20;
@@ -60,7 +60,7 @@ public class Projectile implements Writable{
         Rectangle projectileRectangle = new Rectangle(Math.round(getX() - SIZE / 2),
                 Math.round(getY() - SIZE / 2), SIZE / 2, SIZE / 2);
         Rectangle targetRectangle = new Rectangle(Math.toIntExact(Math.round(target.getX() - Target.SIZE / 2)),  // 
-                Math.toIntExact(Math.round(target.getY() - Target.SIZE / 2)), Target.SIZE, Target.SIZE); //  
+                Math.toIntExact(Math.round(target.getY() - Target.SIZE / 2) + 4), Target.SIZE, Target.SIZE); //  
         return  projectileRectangle.intersects(targetRectangle);
     }
 
