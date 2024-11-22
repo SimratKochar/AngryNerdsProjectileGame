@@ -269,7 +269,7 @@ public class GamePanel extends JPanel {
     // MODIFIES: this
     // EFFECTS: Instantiates a new panel with image, which is initially not visible
     private void addEndGamePanel() {
-        ImageIcon endIcon = new ImageIcon("src/main/ui/GameEnd.jpeg");
+        ImageIcon endIcon = new ImageIcon("data/GameEnd.jpeg");
         Image scaledEndIcon = endIcon.getImage().getScaledInstance(400, 400, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledEndIcon);
         endLabel = new JLabel(scaledIcon);
