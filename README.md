@@ -35,7 +35,9 @@ I first learned about projectile motion in high school. It was pretty difficult 
 ## Instructions for end user
 When you start the game, you will see three different panels. The top panel displays the number of attempts you have made till now and your previously entered parameters. You also have a lot of controls for the game here. The bottom projectile shows you the maximum height and total flight time of the last projectile you launched. In the main panel, which is black, you will see a red circle which is your target. The projectile is launched from the bottom left corner. 
 
-Your mission, should you choose to accept it, is to enter the initial velocity (with a good starting point being 50) and the initial angle for the projectile and click the Launch buttom, to hit the red target. You will see the projectile (blue circle) on the screen if your parameters were valid. **Make sure that your angle (in degrees) is between 0 and 90.**
+Your mission, should you choose to accept it, is to enter the initial velocity (with a good starting point being 50) and the initial angle for the projectile and click the Launch buttom, to hit the red target. You will see the projectile (blue circle) on the screen if your parameters were valid. 
+
+**Make sure that your angle (in degrees) is between 0 and 90, and that you are entering only numbers without spaces for both velocity and angle.**
 
 - The first additional action related to "adding Projectiles to ProjectileList" is removing the last added projectile. In case you entered crazy parameters and don't want it to affect your score, you can click the "Remove Last Projectile" button to preserve your score (and pride!).
 
@@ -47,3 +49,5 @@ Your mission, should you choose to accept it, is to enter the initial velocity (
 
 
 - To load the saved state at a later point, you can click the "Load Game" button. 
+
+- You can also start a new game whenever you want by clicking the "New Game" button. It will create a new window with a new target and no attempts made.
