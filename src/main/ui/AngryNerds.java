@@ -7,9 +7,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+import model.ANGame;
+
 public class AngryNerds extends JFrame {
     private static final int INTERVAL = 16;
 
+    private ANGame game;
     private GamePanel gamePanel;
     private ScorePanel scorePanel;
     private StatsPanel statsPanel;
@@ -18,6 +21,10 @@ public class AngryNerds extends JFrame {
     // EFFECTS: sets up window in which Angry Nerds will be played
     public AngryNerds() {
         super("Angry Nerds: A projectile motion game");
+        this.setSize(1000, 800);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setResizable(false);
+        this.setLayout(new BorderLayout());
         initFrame();
 
         setVisible(true);
@@ -32,11 +39,11 @@ public class AngryNerds extends JFrame {
         Timer t = new Timer(INTERVAL, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                gamePanel.revalidate();
+                game.update();
                 gamePanel.update();
-                scorePanel.revalidate();
-                scorePanel.update(gamePanel);
-                statsPanel.update(gamePanel);
+                gamePanel.repaint();
+                scorePanel.update();
+                statsPanel.update();
             }
         });
         t.start();
@@ -45,14 +52,10 @@ public class AngryNerds extends JFrame {
     // MODIFIES: this
     // EFFECTS: Sets up the frame, initializes the panels
     public void initFrame() {
-        this.setSize(1000, 800);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setResizable(false);
-        this.setLayout(new BorderLayout());
-
-        gamePanel = new GamePanel();
-        scorePanel = new ScorePanel(gamePanel);
-        statsPanel = new StatsPanel(gamePanel);
+        game = new ANGame();
+        gamePanel = new GamePanel(game);
+        scorePanel = new ScorePanel(game);
+        statsPanel = new StatsPanel(game);
 
         this.add(gamePanel, BorderLayout.CENTER);
         this.add(scorePanel, BorderLayout.NORTH);

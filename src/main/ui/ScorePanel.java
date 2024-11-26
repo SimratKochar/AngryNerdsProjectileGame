@@ -4,12 +4,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
+// import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.ANGame;
 import model.Projectile;
 import model.ProjectileList;
 import model.Target;
@@ -29,7 +30,8 @@ public class ScorePanel extends JPanel {
     private static final String VELOCITIESTXT = "Previously entered velocities: ";
     private static final String ANGLESTXT = "Previously entered angles: ";
     private static final String ATTEMPTNUMTXT = "Attempts till now: ";
-    private ProjectileList projectiles;
+    // private ProjectileList projectiles;
+    private ANGame game;
     private static final String JSON_STORE = "./data/gameProgress.json";
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -40,26 +42,26 @@ public class ScorePanel extends JPanel {
     private JButton saveButton;
     private JButton loadButton;
     private JButton newGameButton;
-    private JButton removeLastProjectileButton;
-    private JButton replayLastProjectileButton;
 
     // Constructs a new Score Panel
     // EFFECTS: Sets up a the background color and size and draws the labels and
     // buttons;
     // updates these with the GamePanel whose score is to be displayed.
-    public ScorePanel(GamePanel gp) {
+    public ScorePanel(ANGame game) {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBackground(Color.GRAY);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
 
-        addLabels(gp);
+        this.game = game;
+
+        addLabels();
 
         addNewGameButton();
-        addSaveButton(gp);
-        addLoadButton(gp);
-        addRemoveLastProjectileButton(gp);
-        addReplayLastProjectileButton(gp);
+        addSaveButton();
+        addLoadButton();
+        // addRemoveLastProjectileButton(gp);
+        // addReplayLastProjectileButton(gp);
 
         setLayout(null);
     }
@@ -68,8 +70,8 @@ public class ScorePanel extends JPanel {
     // MODIFIES: this
     // EFFECTS: Adds and the labels for Attempt Number, Velocities and Angles
     // previously entered
-    private void addLabels(GamePanel gp) {
-        projectiles = gp.getProjectiles();
+    private void addLabels() {
+        ProjectileList projectiles = game.getProjectiles();
         velocitiesLbl = new JLabel(VELOCITIESTXT + projectiles.listVelocities());
         velocitiesLbl.setPreferredSize(LBLDIMENSION);
         anglesLbl = new JLabel(ANGLESTXT + projectiles.listAngles());
@@ -88,11 +90,11 @@ public class ScorePanel extends JPanel {
     // MODIFIES: this
     // EFFECTS: Updates the score panel with latest velocities, angles and attempt
     // number
-    public void update(GamePanel gp) {
+    public void update() {
         remove(velocitiesLbl);
         remove(anglesLbl);
         remove(numAttemptsLbl);
-        addLabels(gp);
+        addLabels();
 
         repaint();
     }
@@ -110,22 +112,22 @@ public class ScorePanel extends JPanel {
 
     // MODIFIES: this
     // EFFECTS: Adds a Save button to the ScorePanel
-    private void addSaveButton(GamePanel gp) {
+    private void addSaveButton() {
         saveButton = new JButton("Save Game");
         saveButton.setFocusable(false);
         saveButton.setSize(80, 20);
         saveButton.setBounds(900, 40, 80, 20);
-        saveButton.addActionListener(e -> saveProgress(gp));
+        saveButton.addActionListener(e -> saveProgress());
         this.add(saveButton);
     }
 
     // MODIFIES: JSON_STORE file
     // EFFECTS: Saves the current state of the game to specified file JSON_STORE
-    private void saveProgress(GamePanel gp) {
+    private void saveProgress() {
         try {
             jsonWriter.open();
-            Target target = gp.getTarget();
-            ProjectileList projList = gp.getProjectiles();
+            Target target = game.getTarget();
+            ProjectileList projList = game.getProjectiles();
             jsonWriter.write(target, projList);
             jsonWriter.close();
             System.out.println("Saved progress to " + JSON_STORE);
@@ -136,70 +138,69 @@ public class ScorePanel extends JPanel {
 
     // MODIFIES: this
     // EFFECTS: Adds a Load Game button to the ScorePanel
-    private void addLoadButton(GamePanel gp) {
+    private void addLoadButton() {
         loadButton = new JButton("Load Game");
         loadButton.setFocusable(false);
         loadButton.setBounds(900, 70, 80, 20);
-        loadButton.addActionListener(e -> loadSavedGame(gp));
+        loadButton.addActionListener(e -> loadSavedGame());
         this.add(loadButton);
     }
 
     // MODIFIES: gp
     // EFFECTS: Reads game state from save file and updates the game panel accordingly
-    private void loadSavedGame(GamePanel gp) {
+    private void loadSavedGame() {
         try {
             Target t = jsonReader.readTarget();
             ProjectileList projList = jsonReader.readPList();
-            gp.setTarget(t);
-            gp.setProjectiles(projList);
+            game.setTarget(t);
+            game.setProjectiles(projList);
             Projectile lastProjectile = projList.getProjectiles().getLast();
-            gp.setProjectile(lastProjectile);
-            gp.launchProjectile(lastProjectile);
+            game.setProjectile(lastProjectile);
+            // gp.launchProjectile();
             System.out.println("Loaded game from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE + ".");
         }
     }
 
-    // MODIFIES: this
-    // EFFECTS: Adds a Remove Last Projectile button to the ScorePanel
-    private void addRemoveLastProjectileButton(GamePanel gp) {
-        removeLastProjectileButton = new JButton("Remove Last Projectile");
-        removeLastProjectileButton.setFocusable(false);
-        removeLastProjectileButton.setBounds(740, 25, 150, 20);
-        removeLastProjectileButton.addActionListener(e -> removeLastProjectile(gp));
-        this.add(removeLastProjectileButton);
-    }
+    // // MODIFIES: this
+    // // EFFECTS: Adds a Remove Last Projectile button to the ScorePanel
+    // private void addRemoveLastProjectileButton(GamePanel gp) {
+    //     removeLastProjectileButton = new JButton("Remove Last Projectile");
+    //     removeLastProjectileButton.setFocusable(false);
+    //     removeLastProjectileButton.setBounds(740, 25, 150, 20);
+    //     removeLastProjectileButton.addActionListener(e -> removeLastProjectile(gp));
+    //     this.add(removeLastProjectileButton);
+    // }
 
-    // MODIFIES: gp
-    // EFFECTS: Removes the last projectile in gp's ProjectileList
-    private void removeLastProjectile(GamePanel gp) {
-        ProjectileList projList = gp.getProjectiles();
-        List<Projectile> projectiles = projList.getProjectiles();
-        if (!projectiles.isEmpty()) {
-            projectiles.removeLast();
-            gp.setProjectile(projectiles.getLast());
-            gp.enableLaunchButton();
-        }
-    }
+    // // MODIFIES: gp
+    // // EFFECTS: Removes the last projectile in gp's ProjectileList
+    // private void removeLastProjectile(GamePanel gp) {
+    //     ProjectileList projList = gp.getProjectiles();
+    //     List<Projectile> projectiles = projList.getProjectiles();
+    //     if (!projectiles.isEmpty()) {
+    //         projectiles.removeLast();
+    //         gp.setProjectile(projectiles.getLast());
+    //         gp.enableLaunchButton();
+    //     }
+    // }
 
-    // MODIFIES: this
-    // EFFECTS: Adds a Replay Last Projectile button to the ScorePanel
-    private void addReplayLastProjectileButton(GamePanel gp) {
-        replayLastProjectileButton = new JButton("Replay Last Projectile");
-        replayLastProjectileButton.setFocusable(false);
-        replayLastProjectileButton.setBounds(740, 55, 150, 20);
-        replayLastProjectileButton.addActionListener(e -> replayLastProjectile(gp));
-        this.add(replayLastProjectileButton);
-    }
+    // // MODIFIES: this
+    // // EFFECTS: Adds a Replay Last Projectile button to the ScorePanel
+    // private void addReplayLastProjectileButton(GamePanel gp) {
+    //     replayLastProjectileButton = new JButton("Replay Last Projectile");
+    //     replayLastProjectileButton.setFocusable(false);
+    //     replayLastProjectileButton.setBounds(740, 55, 150, 20);
+    //     replayLastProjectileButton.addActionListener(e -> replayLastProjectile(gp));
+    //     this.add(replayLastProjectileButton);
+    // }
 
-    // MODIFIES: gp
-    // EFFECTS: Launches the last Projectile in gp's ProjectileList again
-    private void replayLastProjectile(GamePanel gp) {
-        List<Projectile> projectiles = gp.getProjectiles().getProjectiles();
-        Projectile lastProjectile = projectiles.getLast();
-        if (!projectiles.isEmpty()) {
-            gp.launchProjectile(lastProjectile);
-        }
-    }
+    // // MODIFIES: gp
+    // // EFFECTS: Launches the last Projectile in gp's ProjectileList again
+    // private void replayLastProjectile(GamePanel gp) {
+    //     List<Projectile> projectiles = gp.getProjectiles().getProjectiles();
+    //     if (!projectiles.isEmpty()) {
+    //         gp.launchProjectile();
+    //     }
+    // }
 }
