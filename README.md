@@ -51,3 +51,15 @@ Your mission, should you choose to accept it, is to enter the initial velocity (
 - To load the saved state at a later point, you can click the "Load Game" button. 
 
 - You can also start a new game whenever you want by clicking the "New Game" button. It will create a new window with a new target and no attempts made.
+
+
+# Phase 4: Task 2
+
+Actions completed: \
+New projectile launched and added to Projectile List \
+New projectile launched and added to Projectile List \
+A projectile was removed. \
+New projectile launched and added to Projectile List \
+A projectile was replayed. \
+New projectile launched and added to Projectile List
+

@@ -3,11 +3,15 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import model.ANGame;
+import model.Event;
+import model.EventLog;
 
 public class AngryNerds extends JFrame {
     private static final int INTERVAL = 16;
@@ -22,7 +26,18 @@ public class AngryNerds extends JFrame {
     public AngryNerds() {
         super("Angry Nerds: A projectile motion game");
         this.setSize(1000, 800);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                EventLog eventLog = EventLog.getInstance();
+                System.out.println("Actions completed:");
+                for (Event event: eventLog) {
+                    System.out.println(event.getDescription());
+                }
+                dispose();
+            }
+        });
+        // this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setLayout(new BorderLayout());
         initFrame();
@@ -43,6 +58,7 @@ public class AngryNerds extends JFrame {
                 gamePanel.update();
                 gamePanel.repaint();
                 scorePanel.update();
+                statsPanel.revalidate();
                 statsPanel.update();
             }
         });

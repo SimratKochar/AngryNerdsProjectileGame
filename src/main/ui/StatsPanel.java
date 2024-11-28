@@ -47,6 +47,7 @@ public class StatsPanel extends JPanel {
         flightTimeLbl.setPreferredSize(LBLDIMENSION);
         add(maxHeightLbl);
         add(flightTimeLbl);
+        repaint();
     }
 
     // MODIFIES: this

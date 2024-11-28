@@ -53,6 +53,7 @@ public class ProjectileList implements Writable {
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
         json.put("projectiles", projectilesToJson());
+        EventLog.getInstance().logEvent(new Event("The game state was saved."));
         return json;
     }
 

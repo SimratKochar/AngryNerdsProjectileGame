@@ -143,7 +143,7 @@ public class GamePanel extends JPanel {
 
                 Projectile newP = new Projectile(projectileVelocity, projectileAngle);
                 game.initProjectile(newP);
-                launchProjectile();
+                prepareForLaunch();
                 repaint();
             }
         });
@@ -166,10 +166,12 @@ public class GamePanel extends JPanel {
         ProjectileList projList = game.getProjectiles();
         List<Projectile> projectiles = projList.getProjectiles();
         if (!projectiles.isEmpty()) {
+            enableLaunchButton();
             showText = false;
             projectiles.removeLast();
             game.setProjectile(projectiles.getLast());
-            enableLaunchButton();
+            game.setWallHit();
+            repaint();
         }
     }
 
@@ -188,16 +190,16 @@ public class GamePanel extends JPanel {
     private void replayLastProjectile() {
         List<Projectile> projectiles = game.getProjectiles().getProjectiles();
         if (!projectiles.isEmpty()) {
-            launchProjectile();
+            prepareForLaunch();
+            game.relaunchProjectile();
         }
     }
 
     // MODIFIES: this, p
     // EFFECTS: resets the game state and prepares for launch
-    public void launchProjectile() {
+    public void prepareForLaunch() {
         showText = false;
         endLabel.setVisible(false);
-        game.launchProjectile();
         repaint();
     }
 
@@ -360,7 +362,6 @@ public class GamePanel extends JPanel {
     // EFFECTS: Enables the launch button, changes collision status of projectile
     // and ensures that the endLabel is not visible
     public void enableLaunchButton() {
-        game.setWallHit();
         endLabel.setVisible(false);
         launchButton.setEnabled(true);
     }

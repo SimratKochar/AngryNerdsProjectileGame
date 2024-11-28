@@ -28,14 +28,19 @@ public class ANGame {
     public void initProjectile(Projectile p) {
         this.projectile = p;
         this.projList.addProjectile(p);
+        this.isTargetHit = false;
+        this.isWallHit = false;
+        this.time = (float) 0.1;
+        EventLog.getInstance().logEvent(new Event("New projectile launched and added to Projectile List"));
     }
 
     // MODIFIES: this
     // EFFECTS: resets the game state and prepares for launch
-    public void launchProjectile() {
+    public void relaunchProjectile() {
         this.isTargetHit = false;
         this.isWallHit = false;
         this.time = (float) 0.1;
+        EventLog.getInstance().logEvent(new Event("A projectile was replayed."));
     }
 
     // Updates the panel and projetile's coordinates on clock tick
@@ -56,6 +61,7 @@ public class ANGame {
     public void setWallHit() {
         this.isTargetHit = false;
         this.isWallHit = true;
+        EventLog.getInstance().logEvent(new Event("A projectile was removed."));
     }
 
     // MODIFIES: g
@@ -116,11 +122,13 @@ public class ANGame {
         this.projectile = p;
     }
 
+    // CALLED ONLY WHEN GAME STATE IS LOADED
     // REQUIRES: A valid Target
     // MODIFIES: this
     // EFFECTS: Updates the panel's Target to t
     public void setTarget(Target t) {
         this.target = t;
+        EventLog.getInstance().logEvent(new Event("The game state was loaded"));
     }
 
     // EFFECTS: Returns if the projectile has hit the wall
