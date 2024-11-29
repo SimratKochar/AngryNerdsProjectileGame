@@ -63,3 +63,8 @@ New projectile launched and added to Projectile List \
 A projectile was replayed. \
 New projectile launched and added to Projectile List
 
+# Phase 4: Task 3
+
+1. One way I would refactor my code is by applying the Observer-Observable pattern. Since the StatsPanel and ScorePanel is updated only when the projectile is launched, ANGame can be made an Observable and the StatsPanel and ScorePanel can be observers.
+
+2. Another possible way of refactoring could be to remove the association between GameConsole and Projectile and ANGame and Projectile. This can be done such that the classes ANGame and GameConsole get the most recent projectile from the ProjectileList class itself. There would possibly still be a dependency to Projectile in those classes though.
